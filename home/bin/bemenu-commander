@@ -73,7 +73,7 @@ cliphist)
 		eval "$clipboard_paste_command"
 	;;
 ref)
-	ref "$HOME/github.com/illia-danko/restricted/ref.gpg"
+	ref "$HOME/github.com/fantasygiveup/restricted/ref.gpg"
 	;;
 ref-data)
 	ref_data

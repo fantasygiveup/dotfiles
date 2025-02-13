@@ -10,8 +10,11 @@
 [ -z "${XDG_DATA_HOME}" ] && export XDG_DATA_HOME="$HOME/.local/share"
 [ -z "${XDG_STATE_HOME}" ] && export XDG_STATE_HOME="$HOME/.local/state"
 
-export VISUAL=emacs-runner
+export VISUAL=nvim
 export EDITOR="$VISUAL"
+# Use neovim as man pager.
+export MANPAGER='nvim +Man!'
+export MANWIDTH=80
 export CLIPBOARD_COPY_COMMAND="xclip -in -selection c"
 [ "$(uname)" = "Darwin" ] && export CLIPBOARD_COPY_COMMAND="pbcopy"
 
@@ -81,7 +84,6 @@ if [ -x "$(command -v fzf)" ]; then
         $HOME/codeberg.org \
         $HOME/.config/nvim \
         $HOME/.local/share/nvim \
-        $HOME/.emacs.d \
         $HOME/bitbucket.org \
         $HOME/bitbucket.dentsplysirona.com"
 	export FZF_PROJECTS_PATTERNS=".git"
