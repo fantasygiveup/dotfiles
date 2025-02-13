@@ -20,19 +20,19 @@ s="$HOME/github.com/LuaLS/lua-language-server/3rd/luamake/luamake" && [ -f "$s" 
 
 # Print system memory stats in MB.
 ps_mb() {
-    ps afu | awk 'NR>1 {$5=int($5/1024)"M";}{ print;}'
+	ps afu | awk 'NR>1 {$5=int($5/1024)"M";}{ print;}'
 }
 
 alias url_decode='perl -pe '\''s/\+/ /g;'\'' -e '\''s/%(..)/chr(hex($1))/eg;'\'' <<< '
 url_encode() {
-    printf %s "$1" | jq -sRr @uri
+	printf %s "$1" | jq -sRr @uri
 }
 
 # Nixos.
 if [ -x "$(command -v nix-env)" ]; then
-    alias nix-ls="sudo nix-env --list-generations --profile /nix/var/nix/profiles/system"
-    alias nix-rm="sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations"
-    alias nix-del="sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot"
+	alias nix-ls="sudo nix-env --list-generations --profile /nix/var/nix/profiles/system"
+	alias nix-rm="sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations"
+	alias nix-del="sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot"
 fi
 
 unset s

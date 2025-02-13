@@ -17,13 +17,13 @@ theme="$(cat "$HOME"/.config/appearance/background)"
 gtk_theme="Adwaita"
 gtk_prefer="prefer-light"
 if [ "$theme" == "light" ]; then
-    theme="dark" && gtk_theme="Adwaita-Dark" && gtk_prefer="prefer-dark"
+	theme="dark" && gtk_theme="Adwaita-Dark" && gtk_prefer="prefer-dark"
 else
-    theme="light" && gtk_theme="Adwaita" && gtk_prefer="prefer-light"
+	theme="light" && gtk_theme="Adwaita" && gtk_prefer="prefer-light"
 fi
 
 # Apply changes.
-echo "$theme" > ~/.config/appearance/background
+echo "$theme" >~/.config/appearance/background
 gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 make -C "$HOME/github.com/illia-danko/dotfiles" config

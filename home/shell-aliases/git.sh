@@ -3,25 +3,25 @@
 # Git command line goodies.
 
 _gd() {
-    ( test "$#" -eq 0 && git diff ) || git diff "$*"
+	(test "$#" -eq 0 && git diff) || git diff "$*"
 }
 
 _gclean() {
-    # https://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-git-managed-project-to-previous-state#answer-42903805
-    #
-    # - Deletes local, non-pushed commits
-    # + Reverts changes you made to tracked files
-    # + Restores tracked files you deleted
-    # + Deletes files/dirs listed in .gitignore (like build files)
-    # + Deletes files/dirs that are not tracked and not in .gitignore
+	# https://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-git-managed-project-to-previous-state#answer-42903805
+	#
+	# - Deletes local, non-pushed commits
+	# + Reverts changes you made to tracked files
+	# + Restores tracked files you deleted
+	# + Deletes files/dirs listed in .gitignore (like build files)
+	# + Deletes files/dirs that are not tracked and not in .gitignore
 
-    git clean --force -d -x
-    git reset --hard
+	git clean --force -d -x
+	git reset --hard
 }
 
 # Case sensitive search.
-_gmessage_search () {
-    git log --all --grep="$*"
+_gmessage_search() {
+	git log --all --grep="$*"
 }
 
 # Reset to revision.
@@ -29,25 +29,25 @@ _gmessage_search () {
 # Usage: grevert 741083d
 # Usage: grevert 741083d file1 file2
 _grevert() {
-    [ $# -lt 2 ] && >&2 echo "Commit hash should be specified" && return 1
+	[ $# -lt 2 ] && >&2 echo "Commit hash should be specified" && return 1
 
-    method="$1"
-    hash="$2"
-    shift
-    files=""
-    if ! test "$#" -eq 1; then
-        shift
-        files="$*"
-    fi
-    bash -c "git apply <(git $method $hash -R $files)"
+	method="$1"
+	hash="$2"
+	shift
+	files=""
+	if ! test "$#" -eq 1; then
+		shift
+		files="$*"
+	fi
+	bash -c "git apply <(git $method $hash -R $files)"
 }
 
 _lg() {
-    lazygit "$@"
+	lazygit "$@"
 }
 
 _gl() {
-    _lg log
+	_lg log
 }
 
 alias gd="_gd"
@@ -60,8 +60,8 @@ alias gp="git push"
 alias gs="git status"
 alias gf="git log -p --all -S"
 alias gF="git log --diff-filter=D --summary --oneline" # show delete files history with commit hashes
-alias gu="_grevert show"  # undo a commit
-alias gr="_grevert diff"  # remove up to a hash
+alias gu="_grevert show"                               # undo a commit
+alias gr="_grevert diff"                               # remove up to a hash
 alias gm="_gmessage_search"
 alias lg="_lg"
 alias gl="_gl"

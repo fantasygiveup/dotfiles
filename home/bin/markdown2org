@@ -5,11 +5,11 @@
 set -euo pipefail
 
 for f in "$1"/*.md; do
-    new_name="$(basename "$f" .md)".org
-    pandoc -f markdown -t org -o "$new_name" "$f"
-    perl -i -ne 'print unless m/:PROPERTIES:/' "$new_name"
-    perl -i -ne 'print unless m/:CUSTOM_ID:/' "$new_name"
-    perl -i -ne 'print unless m/:END:/' "$new_name"
-    perl -i -p -e 's/^#\+begin_src sh/#\+begin_src bash/;' "$new_name"
-    rm -rf "$f"
+	new_name="$(basename "$f" .md)".org
+	pandoc -f markdown -t org -o "$new_name" "$f"
+	perl -i -ne 'print unless m/:PROPERTIES:/' "$new_name"
+	perl -i -ne 'print unless m/:CUSTOM_ID:/' "$new_name"
+	perl -i -ne 'print unless m/:END:/' "$new_name"
+	perl -i -p -e 's/^#\+begin_src sh/#\+begin_src bash/;' "$new_name"
+	rm -rf "$f"
 done

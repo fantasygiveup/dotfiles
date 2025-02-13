@@ -32,17 +32,18 @@ export CLIPBOARD_COPY_COMMAND="xclip -in -selection c"
 [ -d "$HOME/.fzf/bin" ] && export PATH="$HOME/.fzf/bin:$PATH"
 s="$HOME/github.com/LuaLS/lua-language-server/bin" && [ -d "$s" ] && export PATH="$s:$PATH"
 s="/usr/local/bin" && [ -d "$s" ] && export PATH="$s:$PATH"
-s="$HOME/.google-cloud-sdk/path.zsh.inc"; [ -f "$s" ] && . "$s"
+s="$HOME/.google-cloud-sdk/path.zsh.inc"
+[ -f "$s" ] && . "$s"
 s="$HOME/.krew/bin" && [ -d "$s" ] && export PATH="$s:$PATH"
 [ -x "$(command -v minikube)" ] && eval '$(minikube docker-env)'
-[ -x "$(command -v bat)" ] && export BAT_STYLE="plain"  # used by Bat previewer
+[ -x "$(command -v bat)" ] && export BAT_STYLE="plain" # used by Bat previewer
 [ -x "$(command -v shellcheck)" ] && export SHELLCHECK_OPTS='--shell=bash --exclude=SC1090,SC2139,SC2155'
 [ -x "$(command -v iex)" ] && export ERL_AFLAGS="-kernel shell_history enabled"
 [ -x "$(command -v gnome-shell)" ] && [ -f "/etc/arch-release" ] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 
 # NixOS.
-if grep -q 'NAME=NixOS' /etc/os-release &> /dev/null; then
-    [ -x "$(command -v xhost)" ] && xhost + &> /dev/null # share clipboard between docker and host machine using xclip
+if grep -q 'NAME=NixOS' /etc/os-release &>/dev/null; then
+	[ -x "$(command -v xhost)" ] && xhost + &>/dev/null # share clipboard between docker and host machine using xclip
 fi
 
 # SSL termination firefox.
@@ -53,7 +54,7 @@ export MOZ_ENABLE_WAYLAND=1 # run firefox on wayland naively
 export CLOUDSDK_PYTHON=/usr/bin/python3
 export ZK_NOTEBOOK_DIR="$HOME/github.com/illia-danko/zettelkasten"
 if [ -x "$(command -v fzf)" ]; then
-    export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
+	export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
     --no-mouse
     --layout=reverse
     --height 40%
@@ -72,12 +73,12 @@ if [ -x "$(command -v fzf)" ]; then
     --color=gutter:-1,fg:-1,fg+:-1,pointer:1,hl:2,hl+:2,bg+:8
 "
 
-    export FZF_PREVIEW_COMMAND="cat {}"
+	export FZF_PREVIEW_COMMAND="cat {}"
 	export SEARCH_EXCLUDED_DIRS="SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls"
-    export RG_OPTS_FILTER="--hidden --glob=!{$SEARCH_EXCLUDED_DIRS}"
-    export FZF_DEFAULT_COMMAND="rg --files $RG_OPTS_FILTER"
-    export FZF_NOTES_DIR="$HOME/github.com/illia-danko/zettelkasten"
-    export FZF_PROJECTS_ROOT_DIRS=" \
+	export RG_OPTS_FILTER="--hidden --glob=!{$SEARCH_EXCLUDED_DIRS}"
+	export FZF_DEFAULT_COMMAND="rg --files $RG_OPTS_FILTER"
+	export FZF_NOTES_DIR="$HOME/github.com/illia-danko/zettelkasten"
+	export FZF_PROJECTS_ROOT_DIRS=" \
         $HOME/github.com \
         $HOME/gitlab.com \
         $HOME/codeberg.org \
@@ -85,8 +86,8 @@ if [ -x "$(command -v fzf)" ]; then
         $HOME/.local/share/nvim \
         $HOME/bitbucket.org \
         $HOME/bitbucket.dentsplysirona.com"
-    export FZF_PROJECTS_PATTERNS=".git"
-    export FZF_PROJECTS_STATIC_DIRS="$HOME/Downloads $HOME/Documents $HOME/Videos $HOME/Music $HOME/Pictures $HOME/Desktop"
+	export FZF_PROJECTS_PATTERNS=".git"
+	export FZF_PROJECTS_STATIC_DIRS="$HOME/Downloads $HOME/Documents $HOME/Videos $HOME/Music $HOME/Pictures $HOME/Desktop"
 fi
 
 # Clean up.
