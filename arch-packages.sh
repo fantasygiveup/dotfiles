@@ -251,7 +251,7 @@ go_pkgs() {
 	go install github.com/segmentio/golines@latest
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	go install github.com/go-delve/delve/cmd/dlv@latest
-	go install github.com/illia-danko/fdir@latest
+	go install github.com/fantasygiveup/fdir@latest
 }
 
 misc_pkgs() {

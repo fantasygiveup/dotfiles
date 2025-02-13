@@ -49,7 +49,7 @@ export SSLKEYLOGFILE="$HOME/.sslkeylog"
 export NSS_ALLOW_SSLKEYLOGFILE=1
 export MOZ_ENABLE_WAYLAND=1 # run firefox on wayland naively
 export CLOUDSDK_PYTHON=/usr/bin/python3
-export ZK_NOTEBOOK_DIR="$HOME/github.com/illia-danko/zettelkasten"
+export ZK_NOTEBOOK_DIR="$HOME/github.com/fantasygiveup/zettelkasten"
 if [ -x "$(command -v fzf)" ]; then
 	export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
     --no-mouse
@@ -74,7 +74,7 @@ if [ -x "$(command -v fzf)" ]; then
 	export SEARCH_EXCLUDED_DIRS="SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls"
 	export RG_OPTS_FILTER="--hidden --glob=!{$SEARCH_EXCLUDED_DIRS}"
 	export FZF_DEFAULT_COMMAND="rg --files $RG_OPTS_FILTER"
-	export FZF_NOTES_DIR="$HOME/github.com/illia-danko/zettelkasten"
+	export FZF_NOTES_DIR="$HOME/github.com/fantasygiveup/zettelkasten"
 	export FZF_PROJECTS_ROOT_DIRS=" \
         $HOME/github.com \
         $HOME/gitlab.com \

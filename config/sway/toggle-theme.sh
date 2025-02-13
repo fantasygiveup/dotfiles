@@ -26,7 +26,7 @@ fi
 echo "$theme" >~/.config/appearance/background
 gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-make -C "$HOME/github.com/illia-danko/dotfiles" config
+make -C "$HOME/github.com/fantasygiveup/dotfiles" config
 swaymsg reload
 # https://github.com/swaywm/sway/issues/3769
 # export SWAYSOCK="$(sway --get-socketpath)"
