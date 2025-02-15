@@ -1,7 +1,10 @@
 # -----------------------------------------------------------------------------
 # User configuration
-[ -f "$HOME/.appearance.sh" ] && . "$HOME/.appearance.sh"
-[ -f "$HOME/.config-common.sh" ] && . "$HOME/.config-common.sh"
-[ -f "$HOME/.config-work.sh" ] && . "$HOME/.config-work.sh"
+#
+s="$HOME/.appearance.sh" && [ -f "$s" ] && . "$s"
+s="$HOME/.config-common.sh" && [ -f "$s" ] && . "$s"
+s="$HOME/.config-work.sh" && [ -f "$s" ] && . "$s"
+s="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" && [ -f "$s" ] && . "$s"
+unset s
 
 # [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ] && exec sway
