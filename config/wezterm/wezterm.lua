@@ -34,26 +34,40 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   }
 end)
 
-config.line_height = 1.0
 config.font_size = ${TTY_FONT_SIZE}
-
 wezterm.on("increase-font-size", function(window, pane)
   local overrides = window:get_config_overrides() or {}
   overrides.font_size = (overrides.font_size or config.font_size) + 1.0
-  overrides.line_height = (overrides.line_height or config.line_height) + 0.4
   window:set_config_overrides(overrides)
 end)
 
 wezterm.on("decrease-font-size", function(window, pane)
   local overrides = window:get_config_overrides() or {}
-  overrides.font_size = math.max((overrides.font_size or config.font_size) - 1.0, ${TTY_FONT_SIZE}) -- Keep it reasonable
-  overrides.line_height = math.max((overrides.line_height or config.line_height) - 0.4, 1.0) -- Keep it reasonable
+  overrides.font_size = (overrides.font_size or config.font_size) - 1.0
   window:set_config_overrides(overrides)
 end)
 
 wezterm.on("reset-font-size", function(window, pane)
   local overrides = window:get_config_overrides() or {}
   overrides.font_size = ${TTY_FONT_SIZE}
+  window:set_config_overrides(overrides)
+end)
+
+config.line_height = 1.0
+wezterm.on("increase-leading", function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  overrides.line_height = (overrides.line_height or config.line_height) + 0.4
+  window:set_config_overrides(overrides)
+end)
+
+wezterm.on("decrease-leading", function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  overrides.line_height = math.max((overrides.line_height or config.line_height) - 0.4, 1.0) -- Keep it reasonable
+  window:set_config_overrides(overrides)
+end)
+
+wezterm.on("reset-leading", function(window, pane)
+  local overrides = window:get_config_overrides() or {}
   overrides.line_height = 1.0
   window:set_config_overrides(overrides)
 end)
@@ -239,6 +253,21 @@ config.keys = {
     key = "0",
     mods = "CTRL",
     action = wezterm.action.EmitEvent("reset-font-size"),
+  },
+  {
+    key = "+",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action.EmitEvent("increase-leading"),
+  },
+  {
+    key = "_",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action.EmitEvent("decrease-leading"),
+  },
+  {
+    key = ")",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action.EmitEvent("reset-leading"),
   },
 }
 
