@@ -269,6 +269,10 @@ config.keys = {
     mods = "CTRL|SHIFT",
     action = wezterm.action.EmitEvent("reset-leading"),
   },
+  {
+    key = "F11",
+    action = wezterm.action.ToggleFullScreen,
+  },
 }
 
 local act = wezterm.action
