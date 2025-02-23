@@ -17,8 +17,6 @@ if [ ! -n "$DISPLAY" ]; then
 	clipboard_paste_command="wl-copy"
 fi
 
-[ "$XDG_SESSION_TYPE" = wayland ] && export BEMENU_BACKEND=curses || true
-
 read -r -a bemenu_color_opts <<<"--tb=${TTY_COLOR_BG0} \
     --fb=${TTY_COLOR_BG0} --cb=${TTY_COLOR_BG0} \
     --nb=${TTY_COLOR_BG0} --hb=${TTY_COLOR_BG0} \
@@ -69,7 +67,7 @@ commands)
 cliphist)
 	cliphist list |
 		bemenu "${bemenu_color_opts[@]}" --fn "${bemenu_font}" -p "cliphist" -H "${bemenu_line_height}" -n -l 999 |
-		cliphist decode |
+		cliphist decode 2>/dev/null |
 		eval "$clipboard_paste_command"
 	;;
 ref)
