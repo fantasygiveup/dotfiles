@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-bemenu_font_size="13"
+bemenu_font_size="14"
 bemenu_line_height="32"
 bemenu_font="JetBrainsMono Nerd Font Mono Bold ${bemenu_font_size}"
 execute_command="exec"
