@@ -38,7 +38,7 @@ ref() {
 	local data=$(
 		gpg -d "$1" 2>/dev/null |
 			awk 'NF > 0 {$NF = gensub(/./, "*", "g", $NF); print NR, $0}' |
-			bemenu "${bemenu_color_opts[@]}" --fn "${bemenu_font}" -p "ref" -H "${bemenu_line_height}" -n -l 999 |
+			bemenu -i "${bemenu_color_opts[@]}" --fn "${bemenu_font}" -p "ref" -H "${bemenu_line_height}" -n -l 999 |
 			awk '{print $1, $(NF-1)}'
 	)
 
@@ -60,13 +60,13 @@ ref_data() {
 
 case "$1" in
 commands)
-	bemenu-run "${bemenu_color_opts[@]}" --fn "${bemenu_font}" \
+	bemenu-run -i "${bemenu_color_opts[@]}" --fn "${bemenu_font}" \
 		-p "run" -H 40 -n >/dev/null 2>&1 |
 		eval "$execute_command"
 	;;
 cliphist)
 	cliphist list |
-		bemenu "${bemenu_color_opts[@]}" --fn "${bemenu_font}" -p "cliphist" -H "${bemenu_line_height}" -n -l 999 |
+		bemenu -i "${bemenu_color_opts[@]}" --fn "${bemenu_font}" -p "cliphist" -H "${bemenu_line_height}" -n -l 999 |
 		cliphist decode 2>/dev/null |
 		eval "$clipboard_paste_command"
 	;;
