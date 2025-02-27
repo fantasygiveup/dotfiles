@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-bemenu_font_size=$(echo "${TTY_FONT_SIZE} * 1.15" | bc) # includes font scale factor
+bemenu_font_size=$(echo "${TTY_FONT_SIZE} * 1.25" | bc) # includes font scale factor
 bemenu_line_height="32"
 bemenu_font="JetBrainsMono Nerd Font Mono Bold ${bemenu_font_size}"
 execute_command="exec"
