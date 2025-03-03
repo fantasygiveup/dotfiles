@@ -8,6 +8,7 @@
 [ -x "$(command -v grep)" ] && alias grep='grep --color=auto'
 [ -x "$(command -v ip)" ] && alias ip='ip -color=auto'
 [ -x "$(command -v ls)" ] && alias ls='ls --color=auto'
+[ -x "$(command -v eza)" ] && alias ls='eza'
 [ -x "$(command -v bc)" ] && alias bc="bc -l"
 [ -x "$(command -v dmesg)" ] && alias dmesg='dmesg --color=always | less'
 [ -x "$(command -v fdfind)" ] && alias fd="fdfind"
